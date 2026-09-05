@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Life of God — A Resource Hub</title>
+<meta name="description" content="Devotionals, Bible studies, sermons, prayer resources, and reading challenges in one place.">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#1E2820">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icon.svg">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Life of God">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --parchment: #F4EEE0;
+    --parchment-deep: #ECE3CD;
+    --ink: #2C2A24;
+    --evergreen: #2F3B2E;
+    --evergreen-deep: #1E2820;
+    --gold: #A9793D;
+    --line: #D8CDAF;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--parchment);
+    color: var(--ink);
+    font-family: 'Work Sans', sans-serif;
+    line-height: 1.6;
+    font-size: 17px;
+  }
+
+  h1, h2, h3, .verse {
+    font-family: 'Lora', serif;
+    font-weight: 500;
+    color: var(--evergreen-deep);
+  }
+
+  a { color: inherit; }
+
+  .wrap {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  /* ---- Header ---- */
+  header {
+    position: sticky;
+    top: 0;
+    background: var(--parchment);
+    border-bottom: 1px solid var(--line);
+    z-index: 10;
+  }
+
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 32px;
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+
+  .brand {
+    font-family: 'Lora', serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--evergreen-deep);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 28px;
+    list-style: none;
+    font-size: 15px;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    padding-bottom: 3px;
+    border-bottom: 1px solid transparent;
+  }
+
+  .nav-links a:hover {
+    border-bottom-color: var(--gold);
+  }
+
+  .nav-toggle { display: none; }
+
+  /* ---- Hero ---- */
+  .hero {
+    padding: 96px 32px 88px;
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+
+  .hero .kicker {
+    font-size: 15px;
+    color: var(--gold);
+    margin-bottom: 18px;
+  }
+
+  .hero h1 {
+    font-size: 46px;
+    line-height: 1.2;
+    max-width: 640px;
+    margin-bottom: 24px;
+  }
+
+  .hero p.lede {
+    max-width: 500px;
+    font-size: 18px;
+    color: #4A473E;
+    margin-bottom: 36px;
+  }
+
+  .verse-block {
+    border-left: 2px solid var(--gold);
+    padding-left: 20px;
+    max-width: 460px;
+  }
+
+  .verse {
+    font-style: italic;
+    font-size: 19px;
+    color: var(--evergreen);
+  }
+
+  .verse-ref {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 14px;
+    color: #6B6753;
+    margin-top: 8px;
+  }
+
+  /* ---- Search ---- */
+  .search-block {
+    margin-top: 44px;
+    max-width: 460px;
+  }
+
+  .search-label {
+    display: block;
+    font-size: 14px;
+    color: #6B6753;
+    margin-bottom: 10px;
+  }
+
+  .search-box {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #FFFDF7;
+    border: 1px solid var(--line);
+    padding: 14px 16px;
+  }
+
+  .search-box:focus-within {
+    border-color: var(--gold);
+  }
+
+  .search-icon {
+    color: #8A8567;
+    flex-shrink: 0;
+  }
+
+  #site-search {
+    border: none;
+    background: transparent;
+    outline: none;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 16px;
+    color: var(--ink);
+    width: 100%;
+  }
+
+  #site-search::placeholder {
+    color: #A8A387;
+  }
+
+  .search-status {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #6B6753;
+    min-height: 20px;
+  }
+
+  .card.is-hidden {
+    display: none;
+  }
+
+  section.category.is-hidden {
+    display: none;
+  }
+
+  /* ---- Finder ---- */
+  .finder {
+    background: var(--parchment-deep);
+    padding: 64px 32px;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .finder h2 {
+    font-size: 28px;
+    margin-bottom: 8px;
+  }
+
+  .finder-sub {
+    color: #6B6753;
+    font-size: 15px;
+    margin-bottom: 28px;
+  }
+
+  .finder-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .finder-tag {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 15px;
+    background: var(--parchment);
+    border: 1px solid var(--line);
+    color: var(--ink);
+    padding: 10px 18px;
+    cursor: pointer;
+  }
+
+  .finder-tag:hover {
+    border-color: var(--gold);
+  }
+
+  .finder-tag.is-active {
+    background: var(--evergreen-deep);
+    border-color: var(--evergreen-deep);
+    color: var(--parchment);
+  }
+
+  .finder-result {
+    margin-top: 32px;
+    padding-top: 28px;
+    border-top: 1px solid var(--line);
+    max-width: 560px;
+  }
+
+  .finder-result .verse {
+    font-size: 21px;
+  }
+
+  .finder-result .verse-ref {
+    margin-top: 10px;
+  }
+
+  /* ---- Challenge ---- */
+  .challenge-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+  }
+
+  .challenge-card {
+    background: var(--parchment);
+    padding: 32px 28px;
+  }
+
+  .challenge-card h3 {
+    font-size: 21px;
+    margin-bottom: 6px;
+  }
+
+  .challenge-pace {
+    font-size: 14px;
+    color: var(--gold);
+    margin-bottom: 14px;
+  }
+
+  .challenge-card p:not(.challenge-pace) {
+    font-size: 15px;
+    color: #55523F;
+  }
+
+  .challenge-note {
+    margin-top: 24px;
+    font-size: 14px;
+    color: #6B6753;
+  }
+
+  /* ---- Sections ---- */
+  section.category {
+    padding: 64px 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .category-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 36px;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .category-head h2 {
+    font-size: 28px;
+  }
+
+  .category-head p {
+    color: #6B6753;
+    font-size: 15px;
+    max-width: 340px;
+  }
+
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+  }
+
+  .card {
+    background: var(--parchment);
+    padding: 28px;
+    transition: background 0.2s ease;
+  }
+
+  .card:hover {
+    background: var(--parchment-deep);
+  }
+
+  .card .tag {
+    font-size: 13px;
+    color: var(--gold);
+    margin-bottom: 10px;
+  }
+
+  .card h3 {
+    font-size: 19px;
+    margin-bottom: 10px;
+    line-height: 1.35;
+  }
+
+  .card p {
+    font-size: 15px;
+    color: #55523F;
+  }
+
+  /* ---- Community strip ---- */
+  .community {
+    background: var(--evergreen-deep);
+    color: var(--parchment);
+    padding: 72px 32px;
+    margin-top: 48px;
+  }
+
+  .community .wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+
+  .community h2 {
+    color: var(--parchment);
+    font-size: 30px;
+    max-width: 420px;
+  }
+
+  .community p {
+    color: #C9C6B4;
+    max-width: 380px;
+    font-size: 15px;
+  }
+
+  .btn {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--evergreen-deep);
+    padding: 14px 28px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 15px;
+    white-space: nowrap;
+  }
+
+  .btn:hover { background: #BE8A48; }
+
+  /* ---- Footer ---- */
+  footer {
+    padding: 40px 32px;
+    text-align: center;
+    color: #6B6753;
+    font-size: 14px;
+  }
+
+  /* ---- Responsive ---- */
+  @media (max-width: 800px) {
+    .card-grid, .challenge-grid { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 34px; }
+    .nav-links { display: none; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { transition: none !important; }
+  }
+
+  a:focus-visible, button:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 2px;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="nav">
+    <div class="brand">Life of God</div>
+    <ul class="nav-links">
+      <li><a href="#finder">Find a Verse</a></li>
+      <li><a href="#challenge">Reading Challenges</a></li>
+      <li><a href="#devotionals">Devotionals</a></li>
+      <li><a href="#studies">Bible Studies</a></li>
+      <li><a href="#sermons">Sermons</a></li>
+      <li><a href="#prayer">Prayer</a></li>
+      <li><a href="#community">Community</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="kicker">A resource hub for daily faith</div>
+  <h1>Scripture, teaching, and prayer — gathered in one quiet place.</h1>
+  <p class="lede">Life of God brings together devotionals, Bible studies, sermons, and prayer resources so you always know where to return.</p>
+  <div class="verse-block">
+    <p class="verse">"He leadeth me beside the still waters. He restoreth my soul."</p>
+    <p class="verse-ref">Psalm 23:2&ndash;3</p>
+  </div>
+
+  <div class="search-block">
+    <label for="site-search" class="search-label">Search all resources</label>
+    <div class="search-box">
+      <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+      <input type="text" id="site-search" placeholder="Try “prayer”, “Matthew”, or “anxiety”" autocomplete="off">
+    </div>
+    <p class="search-status" id="search-status"></p>
+  </div>
+</section>
+
+<section class="finder" id="finder">
+  <div class="wrap">
+    <h2>What are you carrying today?</h2>
+    <p class="finder-sub">Choose what fits, and find a verse to sit with.</p>
+    <div class="finder-tags" id="finder-tags"></div>
+    <div class="finder-result" id="finder-result" hidden>
+      <p class="verse" id="finder-verse"></p>
+      <p class="verse-ref" id="finder-ref"></p>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <section class="category" id="challenge">
+    <div class="category-head">
+      <h2>Bible Reading Challenges</h2>
+      <p>Pick a pace that fits your life and read through the whole Bible on your own schedule.</p>
+    </div>
+    <div class="challenge-grid">
+      <div class="challenge-card">
+        <div class="tag">Steady pace</div>
+        <h3>1-Year Challenge</h3>
+        <p class="challenge-pace">About 3&ndash;4 chapters a day</p>
+        <p>Reads through the entire Bible over 365 days, mixing Old and New Testament each week so no single book overwhelms your week.</p>
+      </div>
+      <div class="challenge-card">
+        <div class="tag">Focused pace</div>
+        <h3>6-Month Challenge</h3>
+        <p class="challenge-pace">About 6&ndash;7 chapters a day</p>
+        <p>Covers the whole Bible in half the time, best for anyone who already has a daily reading habit and wants to go deeper faster.</p>
+      </div>
+      <div class="challenge-card">
+        <div class="tag">Intensive pace</div>
+        <h3>3-Month Challenge</h3>
+        <p class="challenge-pace">About 13&ndash;14 chapters a day</p>
+        <p>A focused sprint through scripture in 90 days &mdash; well suited to a season of fasting, a sabbatical, or a small group doing it together.</p>
+      </div>
+    </div>
+    <div class="challenge-note">
+      <p>Each challenge starts wherever you begin reading and runs day by day from there &mdash; there's no wrong day to start.</p>
+    </div>
+  </section>
+</div>
+
+<div class="wrap">
+
+  <section class="category" id="devotionals">
+    <div class="category-head">
+      <h2>Daily Devotionals</h2>
+      <p>Short readings to start or close the day with scripture.</p>
+    </div>
+    <div class="card-grid">
+      <div class="card">
+        <div class="tag">5 min read</div>
+        <h3>Morning: Walking in Patience</h3>
+        <p>A reflection on Galatians 5 and what it means to let patience be evidence of the Spirit's work.</p>
+      </div>
+      <div class="card">
+        <div class="tag">5 min read</div>
+        <h3>Evening: Casting Your Cares</h3>
+        <p>Sitting with 1 Peter 5:7 before rest — naming what's heavy and releasing it in prayer.</p>
+      </div>
+      <div class="card">
+        <div class="tag">7 min read</div>
+        <h3>Gratitude in the Ordinary</h3>
+        <p>A week-long series on noticing God's provision in small, everyday moments.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="category" id="studies">
+    <div class="category-head">
+      <h2>Bible Study Guides</h2>
+      <p>Guided studies for individuals or small groups, with discussion questions.</p>
+    </div>
+    <div class="card-grid">
+      <div class="card">
+        <div class="tag">6-week study</div>
+        <h3>The Sermon on the Mount</h3>
+        <p>A close read of Matthew 5&ndash;7, exploring what it means to live as salt and light.</p>
+      </div>
+      <div class="card">
+        <div class="tag">4-week study</div>
+        <h3>Ruth: Loyalty and Redemption</h3>
+        <p>Tracing themes of faithfulness and belonging through the book of Ruth.</p>
+      </div>
+      <div class="card">
+        <div class="tag">Single session</div>
+        <h3>Understanding the Beatitudes</h3>
+        <p>A standalone guide for personal study or a one-off group meeting.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="category" id="sermons">
+    <div class="category-head">
+      <h2>Sermons &amp; Talks</h2>
+      <p>Audio and written messages from guest teachers and pastors.</p>
+    </div>
+    <div class="card-grid">
+      <div class="card">
+        <div class="tag">Audio · 32 min</div>
+        <h3>Faith That Moves Mountains</h3>
+        <p>A message on Mark 11:22&ndash;24 and what it means to pray with expectant faith.</p>
+      </div>
+      <div class="card">
+        <div class="tag">Written</div>
+        <h3>Rest for the Weary</h3>
+        <p>An exploration of Matthew 11:28 for anyone carrying a heavy season.</p>
+      </div>
+      <div class="card">
+        <div class="tag">Audio · 41 min</div>
+        <h3>The Cost of Discipleship</h3>
+        <p>A teaching on Luke 14 and what following Christ genuinely asks of us.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="category" id="prayer">
+    <div class="category-head">
+      <h2>Prayer Resources</h2>
+      <p>Guides, prompts, and structures to shape a consistent prayer life.</p>
+    </div>
+    <div class="card-grid">
+      <div class="card">
+        <div class="tag">Guide</div>
+        <h3>Praying the Psalms</h3>
+        <p>A simple framework for turning the Psalms into your own words of prayer.</p>
+      </div>
+      <div class="card">
+        <div class="tag">Printable</div>
+        <h3>A Weekly Prayer Rhythm</h3>
+        <p>A structure for praying for family, community, and the wider world across seven days.</p>
+      </div>
+      <div class="card">
+        <div class="tag">Guide</div>
+        <h3>Praying Through Anxiety</h3>
+        <p>Scripture-anchored prompts for bringing worry honestly before God.</p>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<section class="community" id="community">
+  <div class="wrap">
+    <div>
+      <h2>Join the community</h2>
+      <p>Get new devotionals and study guides in your inbox each week, and connect with others walking the same path.</p>
+    </div>
+    <a href="#" class="btn">Join the newsletter</a>
+  </div>
+</section>
+
+<footer>
+  &copy; 2026 Life of God. Made for those seeking a quiet place to return to.
+</footer>
+
+<script>
+  (function () {
+    const feelings = [
+      { label: 'Tired', verse: '"Come unto me, all ye that labour and are heavy laden, and I will give you rest."', ref: 'Matthew 11:28' },
+      { label: 'Troubled', verse: '"Let not your heart be troubled: ye believe in God, believe also in me."', ref: 'John 14:1' },
+      { label: 'Nervous', verse: '"Be careful for nothing; but in every thing by prayer and supplication with thanksgiving let your requests be made known unto God."', ref: 'Philippians 4:6' },
+      { label: 'Afraid', verse: '"Fear thou not; for I am with thee: be not dismayed; for I am thy God."', ref: 'Isaiah 41:10' },
+      { label: 'Anxious', verse: '"Cast all your care upon him; for he careth for you."', ref: '1 Peter 5:7' },
+      { label: 'Lonely', verse: '"I will never leave thee, nor forsake thee."', ref: 'Hebrews 13:5' },
+      { label: 'Grieving', verse: '"The Lord is nigh unto them that are of a broken heart."', ref: 'Psalm 34:18' },
+      { label: 'Angry', verse: '"Be ye angry, and sin not: let not the sun go down upon your wrath."', ref: 'Ephesians 4:26' },
+      { label: 'Doubting', verse: '"Lord, I believe; help thou mine unbelief."', ref: 'Mark 9:24' },
+      { label: 'Ashamed', verse: '"There is therefore now no condemnation to them which are in Christ Jesus."', ref: 'Romans 8:1' },
+      { label: 'Weak', verse: '"My grace is sufficient for thee: for my strength is made perfect in weakness."', ref: '2 Corinthians 12:9' },
+      { label: 'Grateful', verse: '"In every thing give thanks: for this is the will of God in Christ Jesus concerning you."', ref: '1 Thessalonians 5:18' }
+    ];
+
+    const tagContainer = document.getElementById('finder-tags');
+    const resultBox = document.getElementById('finder-result');
+    const verseEl = document.getElementById('finder-verse');
+    const refEl = document.getElementById('finder-ref');
+
+    feelings.forEach((feeling) => {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'finder-tag';
+      btn.textContent = feeling.label;
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.finder-tag').forEach((t) => t.classList.remove('is-active'));
+        btn.classList.add('is-active');
+        verseEl.textContent = feeling.verse;
+        refEl.textContent = feeling.ref;
+        resultBox.hidden = false;
+      });
+      tagContainer.appendChild(btn);
+    });
+  })();
+
+  (function () {
+    const input = document.getElementById('site-search');
+    const status = document.getElementById('search-status');
+    const sections = Array.from(document.querySelectorAll('section.category'));
+    const cards = Array.from(document.querySelectorAll('.card')).map((card) => ({
+      el: card,
+      section: card.closest('section.category'),
+      text: card.textContent.toLowerCase()
+    }));
+
+    function runSearch() {
+      const query = input.value.trim().toLowerCase();
+      let visibleCount = 0;
+
+      if (!query) {
+        cards.forEach(({ el }) => el.classList.remove('is-hidden'));
+        sections.forEach((s) => s.classList.remove('is-hidden'));
+        status.textContent = '';
+        return;
+      }
+
+      cards.forEach(({ el, text }) => {
+        const matches = text.includes(query);
+        el.classList.toggle('is-hidden', !matches);
+        if (matches) visibleCount++;
+      });
+
+      sections.forEach((section) => {
+        const hasVisibleCard = section.querySelectorAll('.card:not(.is-hidden)').length > 0;
+        section.classList.toggle('is-hidden', !hasVisibleCard);
+      });
+
+      status.textContent = visibleCount === 0
+        ? `No resources found for "${input.value.trim()}".`
+        : `${visibleCount} resource${visibleCount === 1 ? '' : 's'} found for "${input.value.trim()}".`;
+    }
+
+    input.addEventListener('input', runSearch);
+  })();
+
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('sw.js').catch(() => {
+        /* offline support just won't be available; the site still works */
+      });
+    });
+  }
+</script>
+
+</body>
+  </html>
+        
