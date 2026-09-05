@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>You're offline — Life of God</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;1,400&family=Work+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --parchment: #F4EEE0;
+    --ink: #2C2A24;
+    --evergreen-deep: #1E2820;
+    --gold: #A9793D;
+    --line: #D8CDAF;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--parchment);
+    color: var(--ink);
+    font-family: 'Work Sans', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px;
+  }
+
+  .card {
+    max-width: 420px;
+    text-align: center;
+  }
+
+  .mark {
+    width: 56px;
+    height: 56px;
+    border: 2px solid var(--gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 28px;
+    font-family: 'Lora', serif;
+    font-weight: 600;
+    color: var(--evergreen-deep);
+  }
+
+  h1 {
+    font-family: 'Lora', serif;
+    font-weight: 500;
+    font-size: 26px;
+    color: var(--evergreen-deep);
+    margin-bottom: 14px;
+  }
+
+  p {
+    font-size: 16px;
+    color: #4A473E;
+    margin-bottom: 28px;
+  }
+
+  .verse {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: 17px;
+    color: #4A473E;
+    border-left: 2px solid var(--gold);
+    padding-left: 16px;
+    text-align: left;
+    margin-bottom: 32px;
+  }
+
+  .verse-ref {
+    font-size: 13px;
+    color: #6B6753;
+    margin-top: 8px;
+  }
+
+  button {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    background: var(--evergreen-deep);
+    color: var(--parchment);
+    border: none;
+    padding: 14px 28px;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background: #29352A;
+  }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="mark">LG</div>
+    <h1>No connection right now</h1>
+    <p>You're offline, so this page hasn't loaded from the internet. Anything you've already visited on Life of God is still available &mdash; try going back once you're reconnected.</p>
+    <div class="verse">
+      "Be still, and know that I am God."
+      <div class="verse-ref">Psalm 46:10</div>
+    </div>
+    <button onclick="window.location.reload()">Try again</button>
+  </div>
+</body>
+</html>
