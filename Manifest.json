@@ -1,0 +1,19 @@
+{
+  "name": "Life of God",
+  "short_name": "Life of God",
+  "description": "Devotionals, Bible studies, sermons, prayer resources, and reading challenges in one place.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#F4EEE0",
+  "theme_color": "#1E2820",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
