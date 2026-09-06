@@ -1,4 +1,4 @@
-const CACHE_NAME = 'life-of-god-v3';
+const CACHE_NAME = 'life-of-god-v5';
 const APP_SHELL = [
   './',
   './index.html',
