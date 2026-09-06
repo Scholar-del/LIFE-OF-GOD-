@@ -289,11 +289,112 @@
   .challenge-card p:not(.challenge-pace) {
     font-size: 15px;
     color: #55523F;
+    margin-bottom: 18px;
+  }
+
+  .btn-plan {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    background: transparent;
+    border: 1px solid var(--evergreen-deep);
+    color: var(--evergreen-deep);
+    padding: 10px 18px;
+    cursor: pointer;
+  }
+
+  .btn-plan:hover {
+    background: var(--evergreen-deep);
+    color: var(--parchment);
+  }
+
+  .btn-plan.is-current {
+    background: var(--evergreen-deep);
+    color: var(--parchment);
   }
 
   .challenge-note {
     margin-top: 24px;
     font-size: 14px;
+    color: #6B6753;
+  }
+
+  .progress-panel {
+    margin-top: 40px;
+    padding: 32px;
+    background: var(--parchment-deep);
+    border: 1px solid var(--line);
+    max-width: 560px;
+  }
+
+  .progress-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 18px;
+  }
+
+  .progress-head h3 {
+    font-size: 19px;
+  }
+
+  .link-btn {
+    background: none;
+    border: none;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 13px;
+    color: #6B6753;
+    text-decoration: underline;
+    cursor: pointer;
+    padding: 0;
+  }
+
+  .progress-bar-track {
+    background: var(--line);
+    height: 10px;
+    width: 100%;
+    margin-bottom: 12px;
+  }
+
+  .progress-bar-fill {
+    background: var(--gold);
+    height: 100%;
+    width: 0%;
+    transition: width 0.3s ease;
+  }
+
+  .progress-status {
+    font-size: 15px;
+    color: var(--ink);
+    margin-bottom: 20px;
+  }
+
+  .btn-mark {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    background: var(--evergreen-deep);
+    color: var(--parchment);
+    border: none;
+    padding: 14px 24px;
+    cursor: pointer;
+    width: 100%;
+  }
+
+  .btn-mark:hover {
+    background: #29352A;
+  }
+
+  .btn-mark:disabled {
+    background: #A8A387;
+    cursor: default;
+  }
+
+  .progress-saved-note {
+    margin-top: 14px;
+    font-size: 13px;
     color: #6B6753;
   }
 
@@ -355,6 +456,111 @@
   .card p {
     font-size: 15px;
     color: #55523F;
+  }
+
+  /* ---- Prayer form ---- */
+  .prayer-form-block {
+    margin-top: 48px;
+    padding-top: 40px;
+    border-top: 1px solid var(--line);
+    max-width: 480px;
+  }
+
+  .prayer-form-block h3 {
+    font-size: 21px;
+    margin-bottom: 8px;
+  }
+
+  .prayer-form-sub {
+    font-size: 14px;
+    color: #6B6753;
+    margin-bottom: 24px;
+  }
+
+  #prayer-form label {
+    display: block;
+    font-size: 14px;
+    color: #6B6753;
+    margin-bottom: 8px;
+  }
+
+  #prayer-form input,
+  #prayer-form textarea {
+    width: 100%;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 15px;
+    color: var(--ink);
+    background: #FFFDF7;
+    border: 1px solid var(--line);
+    padding: 12px 14px;
+    margin-bottom: 20px;
+    resize: vertical;
+  }
+
+  #prayer-form input:focus,
+  #prayer-form textarea:focus {
+    outline: none;
+    border-color: var(--gold);
+  }
+
+  /* ---- YouTube ---- */
+  .youtube-section {
+    padding: 72px 32px;
+    border-top: 1px solid var(--line);
+  }
+
+  .youtube-head {
+    max-width: 560px;
+    margin: 0 auto 32px;
+    text-align: center;
+  }
+
+  .youtube-head h2 {
+    font-size: 28px;
+    margin-bottom: 10px;
+  }
+
+  .youtube-head p {
+    font-size: 15px;
+    color: #6B6753;
+  }
+
+  .youtube-embed {
+    max-width: 720px;
+    margin: 0 auto 28px;
+    position: relative;
+    padding-top: 56.25%;
+    background: #000;
+    border: 1px solid var(--line);
+  }
+
+  .youtube-embed iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+
+  .btn-subscribe {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    max-width: 260px;
+    margin: 0 auto;
+    background: #FF0000;
+    color: #FFFFFF;
+    text-decoration: none;
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    padding: 14px 24px;
+  }
+
+  .btn-subscribe:hover {
+    background: #D90000;
   }
 
   /* ---- Community strip ---- */
@@ -436,6 +642,7 @@
       <li><a href="#studies">Bible Studies</a></li>
       <li><a href="#sermons">Sermons</a></li>
       <li><a href="#prayer">Prayer</a></li>
+      <li><a href="#youtube">YouTube</a></li>
       <li><a href="#community">Community</a></li>
     </ul>
   </nav>
@@ -479,27 +686,43 @@
       <p>Pick a pace that fits your life and read through the whole Bible on your own schedule.</p>
     </div>
     <div class="challenge-grid">
-      <div class="challenge-card">
+      <div class="challenge-card" data-plan="1-year" data-days="365">
         <div class="tag">Steady pace</div>
         <h3>1-Year Challenge</h3>
         <p class="challenge-pace">About 3&ndash;4 chapters a day</p>
         <p>Reads through the entire Bible over 365 days, mixing Old and New Testament each week so no single book overwhelms your week.</p>
+        <button type="button" class="btn-plan" data-plan="1-year" data-days="365">Start this plan</button>
       </div>
-      <div class="challenge-card">
+      <div class="challenge-card" data-plan="6-month" data-days="180">
         <div class="tag">Focused pace</div>
         <h3>6-Month Challenge</h3>
         <p class="challenge-pace">About 6&ndash;7 chapters a day</p>
         <p>Covers the whole Bible in half the time, best for anyone who already has a daily reading habit and wants to go deeper faster.</p>
+        <button type="button" class="btn-plan" data-plan="6-month" data-days="180">Start this plan</button>
       </div>
-      <div class="challenge-card">
+      <div class="challenge-card" data-plan="3-month" data-days="90">
         <div class="tag">Intensive pace</div>
         <h3>3-Month Challenge</h3>
         <p class="challenge-pace">About 13&ndash;14 chapters a day</p>
         <p>A focused sprint through scripture in 90 days &mdash; well suited to a season of fasting, a sabbatical, or a small group doing it together.</p>
+        <button type="button" class="btn-plan" data-plan="3-month" data-days="90">Start this plan</button>
       </div>
     </div>
     <div class="challenge-note">
       <p>Each challenge starts wherever you begin reading and runs day by day from there &mdash; there's no wrong day to start.</p>
+    </div>
+
+    <div class="progress-panel" id="progress-panel" hidden>
+      <div class="progress-head">
+        <h3 id="progress-title">Your progress</h3>
+        <button type="button" class="link-btn" id="progress-reset">Switch or reset plan</button>
+      </div>
+      <div class="progress-bar-track">
+        <div class="progress-bar-fill" id="progress-bar-fill"></div>
+      </div>
+      <p class="progress-status" id="progress-status"></p>
+      <button type="button" class="btn-mark" id="progress-mark">Mark today's reading complete</button>
+      <p class="progress-saved-note">Saved on this device &mdash; it'll be here next time you open the app.</p>
     </div>
   </section>
 </div>
@@ -599,112 +822,4 @@
         <h3>Praying Through Anxiety</h3>
         <p>Scripture-anchored prompts for bringing worry honestly before God.</p>
       </div>
-    </div>
-  </section>
-
-</div>
-
-<section class="community" id="community">
-  <div class="wrap">
-    <div>
-      <h2>Join the community</h2>
-      <p>Get new devotionals and study guides in your inbox each week, and connect with others walking the same path.</p>
-    </div>
-    <a href="#" class="btn">Join the newsletter</a>
-  </div>
-</section>
-
-<footer>
-  &copy; 2026 Life of God. Made for those seeking a quiet place to return to.
-</footer>
-
-<script>
-  (function () {
-    const feelings = [
-      { label: 'Tired', verse: '"Come unto me, all ye that labour and are heavy laden, and I will give you rest."', ref: 'Matthew 11:28' },
-      { label: 'Troubled', verse: '"Let not your heart be troubled: ye believe in God, believe also in me."', ref: 'John 14:1' },
-      { label: 'Nervous', verse: '"Be careful for nothing; but in every thing by prayer and supplication with thanksgiving let your requests be made known unto God."', ref: 'Philippians 4:6' },
-      { label: 'Afraid', verse: '"Fear thou not; for I am with thee: be not dismayed; for I am thy God."', ref: 'Isaiah 41:10' },
-      { label: 'Anxious', verse: '"Cast all your care upon him; for he careth for you."', ref: '1 Peter 5:7' },
-      { label: 'Lonely', verse: '"I will never leave thee, nor forsake thee."', ref: 'Hebrews 13:5' },
-      { label: 'Grieving', verse: '"The Lord is nigh unto them that are of a broken heart."', ref: 'Psalm 34:18' },
-      { label: 'Angry', verse: '"Be ye angry, and sin not: let not the sun go down upon your wrath."', ref: 'Ephesians 4:26' },
-      { label: 'Doubting', verse: '"Lord, I believe; help thou mine unbelief."', ref: 'Mark 9:24' },
-      { label: 'Ashamed', verse: '"There is therefore now no condemnation to them which are in Christ Jesus."', ref: 'Romans 8:1' },
-      { label: 'Weak', verse: '"My grace is sufficient for thee: for my strength is made perfect in weakness."', ref: '2 Corinthians 12:9' },
-      { label: 'Grateful', verse: '"In every thing give thanks: for this is the will of God in Christ Jesus concerning you."', ref: '1 Thessalonians 5:18' }
-    ];
-
-    const tagContainer = document.getElementById('finder-tags');
-    const resultBox = document.getElementById('finder-result');
-    const verseEl = document.getElementById('finder-verse');
-    const refEl = document.getElementById('finder-ref');
-
-    feelings.forEach((feeling) => {
-      const btn = document.createElement('button');
-      btn.type = 'button';
-      btn.className = 'finder-tag';
-      btn.textContent = feeling.label;
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('.finder-tag').forEach((t) => t.classList.remove('is-active'));
-        btn.classList.add('is-active');
-        verseEl.textContent = feeling.verse;
-        refEl.textContent = feeling.ref;
-        resultBox.hidden = false;
-      });
-      tagContainer.appendChild(btn);
-    });
-  })();
-
-  (function () {
-    const input = document.getElementById('site-search');
-    const status = document.getElementById('search-status');
-    const sections = Array.from(document.querySelectorAll('section.category'));
-    const cards = Array.from(document.querySelectorAll('.card')).map((card) => ({
-      el: card,
-      section: card.closest('section.category'),
-      text: card.textContent.toLowerCase()
-    }));
-
-    function runSearch() {
-      const query = input.value.trim().toLowerCase();
-      let visibleCount = 0;
-
-      if (!query) {
-        cards.forEach(({ el }) => el.classList.remove('is-hidden'));
-        sections.forEach((s) => s.classList.remove('is-hidden'));
-        status.textContent = '';
-        return;
-      }
-
-      cards.forEach(({ el, text }) => {
-        const matches = text.includes(query);
-        el.classList.toggle('is-hidden', !matches);
-        if (matches) visibleCount++;
-      });
-
-      sections.forEach((section) => {
-        const hasVisibleCard = section.querySelectorAll('.card:not(.is-hidden)').length > 0;
-        section.classList.toggle('is-hidden', !hasVisibleCard);
-      });
-
-      status.textContent = visibleCount === 0
-        ? `No resources found for "${input.value.trim()}".`
-        : `${visibleCount} resource${visibleCount === 1 ? '' : 's'} found for "${input.value.trim()}".`;
-    }
-
-    input.addEventListener('input', runSearch);
-  })();
-
-  if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-      navigator.serviceWorker.register('sw.js').catch(() => {
-        /* offline support just won't be available; the site still works */
-      });
-    });
-  }
-</script>
-
-</body>
-  </html>
-        
+    
